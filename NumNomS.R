@@ -7,7 +7,7 @@
 # The software also provides a test-wise permutation-based familywise-corrected
 # critical p-value, pPBFW, that should be at least as powerful as Bonferroni correction.
 # Additionally, while this is not principled at this point, the software reports which tests
-# are significant when using Bonferroni correction over the number of nominally significant
+# are significant when using Bonferroni correction over the expected number of nominally significant
 # tests. This is intended to be used only after protection by NumNomS significance, to reduce
 # the number of false test-wise positives after a false NumNomS positive.
 # Note that the number of iterations can be adjusted to address any concerns with the use
@@ -32,7 +32,7 @@ Permed0 <- function(DF) {
 
 NumNomS <- function(DF) {
   # Generate null hypothesis distribution of number-of-nominally-significant tests
-  nIterations = 50
+  nIterations = 500
   nSigvec <- c()
   smallest_p_vec <- c()
   print("Generating null hypothesis distribution...")
@@ -57,11 +57,11 @@ NumNomS <- function(DF) {
   #   vector of significance of tests with Bonferroni-correction for nominally significant subset
   #   Permutation-based FWE-controlling p-value
   #   vector of significance of tests using pPBFWC_
-  nNomDiv <- OObs[[1]]
+  nNomDiv <- mean(nSigvec)
   if (nNomDiv == 0) {
     nNomDiv <- 1
   }
-  Output <- list(p, (OObs[[2]] < 0.05) + 0, (OObs[[2]] < (0.05/nNomDiv)) + 0, pPBFWC_, (OObs[[2]] < pPBFWC_) + 0)
+  Output <- list(p, ((p < 0.05) + 0) * (OObs[[2]] < 0.05) + 0, ((p < 0.05) + 0) * (OObs[[2]] < (0.05/nNomDiv)) + 0, pPBFWC_, (OObs[[2]] < pPBFWC_) + 0)
 }
 
 # Tests with simulated data
