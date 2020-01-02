@@ -1,4 +1,4 @@
-# The NumNomsS method for multiple testing problems.
+# The NumNomS method for multiple testing problems.
 # Based on Gladwin, Derks et al. (2012) and Gladwin & Vink, 2018.
 # This is a "no smoke without fire" test that trades off precision for statistical power.
 # The NumNomS set-wise test considers the number of nominally significant tests.
