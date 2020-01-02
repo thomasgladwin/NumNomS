@@ -47,7 +47,7 @@ NumNomS <- function(DF) {
     nSigvec <- c(nSigvec, O[[1]])
     smallest_p_vec <- c(smallest_p_vec, min(O[[2]]))
   }
-  # Compare observed number of nomially significant tests with H0 distribution
+  # Compare observed number of nominally significant tests with H0 distribution
   OObs <- nSigFunc(DF)
   p <- length(which(nSigvec >= OObs[[1]])) / length(nSigvec)
   # Get pPBFWC_, the minimal p-value over the group of tests with 5% familywise error rate 
