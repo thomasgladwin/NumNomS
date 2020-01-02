@@ -11,7 +11,7 @@
 # tests. This is intended to be used only after protection by NumNomS significance, to reduce
 # the number of false test-wise positives after a false NumNomS positive.
 # Note that the number of iterations can be adjusted to address any concerns with the use
-# of permutation tests to a trivial level, relative to the inherent uncertainity of sampling.
+# of permutation tests to a trivial level, relative to the inherent uncertainty of sampling.
 
 nSigFunc <- function(ToTest) {
   # Adjust this function to perform the desired tests
