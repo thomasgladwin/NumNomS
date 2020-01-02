@@ -1,5 +1,5 @@
 # The NumNomsS method for multiple testing problems.
-# Based on Gladwin & Vink, 2018.
+# Based on Gladwin, Derk et al. (2012) and Gladwin & Vink, 2018.
 # This is a "no smoke without fire" test that trades off precision for statistical power.
 # The NumNomS set-wise test considers the number of nominally significant tests.
 # A null hypothesis distribution of this number is determined by permutation testing, 
