@@ -1,5 +1,5 @@
 # The NumNomsS method for multiple testing problems.
-# Based on Gladwin, Derk et al. (2012) and Gladwin & Vink, 2018.
+# Based on Gladwin, Derks et al. (2012) and Gladwin & Vink, 2018.
 # This is a "no smoke without fire" test that trades off precision for statistical power.
 # The NumNomS set-wise test considers the number of nominally significant tests.
 # A null hypothesis distribution of this number is determined by permutation testing, 
@@ -23,6 +23,7 @@ nSigFunc <- function(ToTest) {
 }
 
 Permed0 <- function(DF) {
+  # Adjust this function to randomly permute the data as needed
   flipper0 <- matrix(runif(nObservations), ncol = 1)
   flipper0[flipper0 < 0.5] = -1
   flipper0[flipper0 >= 0.5] = 1
@@ -32,7 +33,7 @@ Permed0 <- function(DF) {
 
 NumNomS <- function(DF) {
   # Generate null hypothesis distribution of number-of-nominally-significant tests
-  nIterations = 500
+  nIterations = 1000
   nSigvec <- c()
   smallest_p_vec <- c()
   print("Generating null hypothesis distribution...")
@@ -53,10 +54,10 @@ NumNomS <- function(DF) {
   pPBFWC_ <- quantile(smallest_p_vec, 0.05)
   # Return:
   #   p-value of number of nominally significant results
-  #   vector of p-values
-  #   vector of significance of tests with Bonferroni-correction for nominally significant subset
+  #   vector of nominally significant of tests
+  #   vector of significant tests with Bonferroni-correction for expected number of nominally significant tests
   #   Permutation-based FWE-controlling p-value
-  #   vector of significance of tests using pPBFWC_
+  #   vector of significant tests using pPBFWC_
   nNomDiv <- mean(nSigvec)
   if (nNomDiv == 0) {
     nNomDiv <- 1
@@ -65,8 +66,8 @@ NumNomS <- function(DF) {
 }
 
 # Tests with simulated data
-nIterations <- 500
-nVariables <- 20
+nIterations <- 1000
+nVariables <- 200
 nObservations <- 100
 common_signal_strength <- 0.5
 pvec <- c()
