@@ -15,3 +15,8 @@ Additionally, while this is not principled at this point, the software reports w
 Note that the number of iterations can be adjusted to address any concerns with the use of permutation tests to a trivial level, relative to the inherent uncertainity of sampling.
 
 NumNomS.R contains the core NumNomS function, adjustable functions to change the performed tests and permutation, and simulation code.
+
+
+
+[![DOI](https://zenodo.org/badge/230531710.svg)](https://zenodo.org/badge/latestdoi/230531710)
+
