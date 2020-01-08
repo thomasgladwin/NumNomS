@@ -12,7 +12,7 @@ The software also provides a test-wise permutation-based familywise-corrected cr
 
 Additionally, while this is not principled at this point, the software reports which tests are significant when using Bonferroni correction over the expected number of nominally significant tests. This is intended to be used only after protection by NumNomS significance, to reduce the number of false test-wise positives after a false NumNomS positive to a similar level as for a single test.
 
-Note that the number of iterations can be adjusted to address any concerns with the use of permutation tests to a trivial level, relative to the inherent uncertainity of sampling.
+Note that the number of iterations can be adjusted to address any concerns with the use of permutation tests to a trivial level, relative to the inherent uncertainty of sampling.
 
 NumNomS.R contains the core NumNomS function, adjustable functions to change the performed tests and permutation, and simulation code.
 
