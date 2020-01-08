@@ -33,7 +33,7 @@ Permed0 <- function(DF) {
 
 NumNomS <- function(DF) {
   # Generate null hypothesis distribution of number-of-nominally-significant tests
-  nIterations = 1000
+  nIterations = 2500
   nSigvec <- c()
   smallest_p_vec <- c()
   print("Generating null hypothesis distribution...")
@@ -49,7 +49,7 @@ NumNomS <- function(DF) {
   }
   # Compare observed number of nominally significant tests with H0 distribution
   OObs <- nSigFunc(DF)
-  p <- length(which(nSigvec >= OObs[[1]])) / length(nSigvec)
+  p <- length(which(nSigvec > OObs[[1]])) / length(nSigvec)
   # Get pPBFWC_, the minimal p-value over the group of tests with 5% familywise error rate 
   pPBFWC_ <- quantile(smallest_p_vec, 0.05)
   # Return:
@@ -66,8 +66,8 @@ NumNomS <- function(DF) {
 }
 
 # Tests with simulated data
-nIterations <- 1000
-nVariables <- 200
+nIterations <- 500
+nVariables <- 50
 nObservations <- 100
 common_signal_strength <- 0.5
 pvec <- c()
@@ -85,7 +85,7 @@ for (n in 1:nIterations) {
     M <- cbind(M, v)
     varnames <- c(varnames, paste("var", iColumn))
   }
-  common_signal <- matrix(rnorm(prod(dim(M))), nrow <- nObservations)
+  common_signal <- matrix(rnorm(dim(M)[1], 0), ncol = 1) %*% matrix(1, ncol = nVariables)
   M <- (1 - common_signal_strength) * M + common_signal_strength * common_signal
   DF <- data.frame(M)
   names(DF) <- varnames
