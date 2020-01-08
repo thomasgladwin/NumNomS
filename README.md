@@ -16,7 +16,7 @@ Note that the number of iterations can be adjusted to address any concerns with 
 
 NumNomS.R contains the core NumNomS function, adjustable functions to change the performed tests and permutation, and simulation code.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3601575.svg)](https://doi.org/10.5281/zenodo.3601575)
 
 
-[![DOI](https://zenodo.org/badge/230531710.svg)](https://zenodo.org/badge/latestdoi/230531710)
 
